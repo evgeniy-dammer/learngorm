@@ -20,7 +20,7 @@ func (product *Product) TableName() string {
 
 func (product Product) ToString() string {
 	return fmt.Sprintf(
-		"\tId: %d\n\tName: %s\n\tPrice: %0.1f\n\tQuantity: %d\n\tStatus: %t\n\tCreated: %s",
+		"\tId: %d\tName: %s\tPrice: %0.1f\tQuantity: %d\tStatus: %t\tCreated: %s",
 		product.Id,
 		product.Name,
 		product.Price,

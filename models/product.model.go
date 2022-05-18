@@ -33,3 +33,57 @@ func (productModel ProductModel) FindProductsWithBetween(db *gorm.DB, min float6
 
 	return products, nil
 }
+
+//FindProductStartsWith returns entities list starts with LIKE condition from Database
+func (productModel ProductModel) FindProductsStartsWith(db *gorm.DB, keyword string) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Where("name LIKE ?", keyword+"%").Find(&products)
+
+	return products, nil
+}
+
+//FindProductEndsWith returns entities list ends with LIKE condition from Database
+func (productModel ProductModel) FindProductsEndsWith(db *gorm.DB, keyword string) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Where("name LIKE ?", "%"+keyword).Find(&products)
+
+	return products, nil
+}
+
+//FindProductContains returns entities list contains with LIKE condition from Database
+func (productModel ProductModel) FindProductsContains(db *gorm.DB, keyword string) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Where("name LIKE ?", "%"+keyword+"%").Find(&products)
+
+	return products, nil
+}
+
+//FindProductsOrderByDesc returns entities list ordered by DESC from Database
+func (productModel ProductModel) FindProductsOrderByDesc(db *gorm.DB) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Order("price DESC").Find(&products)
+
+	return products, nil
+}
+
+//FindProductsOrderByAsc returns entities list ordered by ASC from Database
+func (productModel ProductModel) FindProductsOrderByAsc(db *gorm.DB) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Order("price ASC").Find(&products)
+
+	return products, nil
+}
+
+//FindProductsOrderByAndCondition returns entities list ordered by and condition from Database
+func (productModel ProductModel) FindProductsOrderByAndCondition(db *gorm.DB, status bool) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Where("status = ?", status).Order("price DESC").Find(&products)
+
+	return products, nil
+}
