@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"log"
+	"time"
 
 	"github.com/evgeniy-dammer/learngorm/config"
 	"github.com/evgeniy-dammer/learngorm/models"
@@ -121,4 +122,99 @@ func ProductsListOrderByAndCondition() {
 	}
 
 	output.Output(productsListOrderByAndCondition, "List of products ordered by DESC and with condition:")
+}
+
+//Get entities list with LIMIT from Database
+func ProductsListWithLimit() {
+	productsListWithLimit, err := productModel.FindProductsWithLimit(db, 2)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productsListWithLimit, "List of products with LIMIT:")
+}
+
+//Get entities list ordered by with LIMIT from Database
+func ProductsListOrderByWithLimit() {
+	productsListOrderByWithLimit, err := productModel.FindProductsOrderByWithLimit(db, 2)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productsListOrderByWithLimit, "List of products ordered by with LIMIT:")
+}
+
+//Get entities list ordered by with LIMIT and condition from Database
+func ProductsListOrderByWithWhereAndLimit() {
+	productsListOrderByWithWhereAndLimit, err := productModel.FindProductsOrderByWithWhereAndLimit(db, true, 2)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productsListOrderByWithWhereAndLimit, "List of products ordered by with LIMIT and condition:")
+}
+
+//Get entities list by year, month and day from Database
+func ProductsListByYearAndMonthAndDay() {
+	productsListByYearAndMonthAndDay, err := productModel.FindProductsByYearAndMonthAndDay(db, 2019, 11, 8)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productsListByYearAndMonthAndDay, "List of products by year, month and day:")
+}
+
+//Get entities list by date from Database
+func ProductsListByDate() {
+	date, err := time.Parse("2006-01-02", "2019-07-10")
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	productsListByDate, err := productModel.FindProductsByDate(db, date)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productsListByDate, "List of products by date:")
+}
+
+//Get entities list by dates from Database
+func ProductsListByDates() {
+	startDate, err := time.Parse("2006-01-02", "2019-07-09")
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	endDate, err := time.Parse("2006-01-02", "2019-07-15")
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	productsListByDates, err := productModel.FindProductsByDates(db, startDate, endDate)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productsListByDates, "List of products by dates:")
+}
+
+//Get entity by id from Database
+func ProductById() {
+	productById, err := productModel.FindProductById(db, 2)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productById, "Product by ID:")
 }

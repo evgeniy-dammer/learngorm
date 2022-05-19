@@ -1,6 +1,8 @@
 package models
 
 import (
+	"time"
+
 	"github.com/evgeniy-dammer/learngorm/entities"
 	"gorm.io/gorm"
 )
@@ -84,6 +86,69 @@ func (productModel ProductModel) FindProductsOrderByAndCondition(db *gorm.DB, st
 	var products []entities.Product
 
 	db.Where("status = ?", status).Order("price DESC").Find(&products)
+
+	return products, nil
+}
+
+//FindProductsWithLimit returns entities list with LIMIT from Database
+func (productModel ProductModel) FindProductsWithLimit(db *gorm.DB, n int) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Limit(n).Find(&products)
+
+	return products, nil
+}
+
+//FindProductsOrderByWithLimit returns entities list ordered by with LIMIT from Database
+func (productModel ProductModel) FindProductsOrderByWithLimit(db *gorm.DB, n int) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Order("price DESC").Limit(n).Find(&products)
+
+	return products, nil
+}
+
+//FindProductsOrderByWithWhereAndLimit returns entities list ordered by with LIMIT and condition from Database
+func (productModel ProductModel) FindProductsOrderByWithWhereAndLimit(db *gorm.DB, status bool, n int) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Where("status = ?", status).Order("price DESC").Limit(n).Find(&products)
+
+	return products, nil
+}
+
+//FindProductsByYearAndMonthAndDay returns entities list by year, month and day from Database
+func (productModel ProductModel) FindProductsByYearAndMonthAndDay(db *gorm.DB, year int, month int, day int) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Where("extract(year from created) = ? AND extract(month from created) = ? AND extract(day from created) = ?", year, month, day).Find(&products)
+
+	return products, nil
+}
+
+//FindProductsByDate returns entities list by date from Database
+func (productModel ProductModel) FindProductsByDate(db *gorm.DB, date time.Time) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Where("created = ?", date).Find(&products)
+
+	return products, nil
+}
+
+//FindProductsByDates returns entities list by dates from Database
+func (productModel ProductModel) FindProductsByDates(db *gorm.DB, startDate time.Time, endDate time.Time) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Where("created >= ? AND created <= ?", startDate, endDate).Find(&products)
+
+	return products, nil
+}
+
+//FindProductById returns entity by id from Database
+func (productModel ProductModel) FindProductById(db *gorm.DB, id int) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Where("id = ?", id).Find(&products)
 
 	return products, nil
 }

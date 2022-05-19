@@ -12,4 +12,11 @@ func main() {
 	controllers.ProductsListOrderByDesc()
 	controllers.ProductsListOrderByAsc()
 	controllers.ProductsListOrderByAndCondition()
+	controllers.ProductsListWithLimit()
+	controllers.ProductsListOrderByWithLimit()
+	controllers.ProductsListOrderByWithWhereAndLimit()
+	controllers.ProductsListByYearAndMonthAndDay()
+	controllers.ProductsListByDate()
+	controllers.ProductsListByDates()
+	controllers.ProductById()
 }
