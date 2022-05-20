@@ -218,3 +218,47 @@ func ProductById() {
 
 	output.Output(productById, "Product by ID:")
 }
+
+//Get entities list with select from Database
+func ProductListWithSelect() {
+	productListWithSelect, err := productModel.FindProductWithSelect(db)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productListWithSelect, "List of products wit select:")
+}
+
+//Get entities list with select and condition from Database
+func ProductListWithSelectAndCondition() {
+	productListWithSelectAndCondition, err := productModel.FindProductWithSelectAndCondition(db, true)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productListWithSelectAndCondition, "List of products with select and condition:")
+}
+
+//Get entities list with GROUP BY from Database
+func ProductListWithGroupBy() {
+	productListWithGroupBy, err := productModel.FindProductGroupBy(db)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productListWithGroupBy, "List of products with GROUP BY:")
+}
+
+//Get entities list with HAVING from Database
+func ProductListWithHaving() {
+	productListWithHaving, err := productModel.FindProductWithHaving(db)
+
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	output.Output(productListWithHaving, "List of products with HAVING:")
+}

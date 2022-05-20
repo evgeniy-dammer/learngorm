@@ -19,4 +19,8 @@ func main() {
 	controllers.ProductsListByDate()
 	controllers.ProductsListByDates()
 	controllers.ProductById()
+	controllers.ProductListWithSelect()
+	controllers.ProductListWithSelectAndCondition()
+	controllers.ProductListWithGroupBy()
+	controllers.ProductListWithHaving()
 }

@@ -6,12 +6,19 @@ import (
 	"github.com/evgeniy-dammer/learngorm/entities"
 )
 
-//Output print list of products in console
-func Output(products []entities.Product, listName string) {
+//Output print list of entities in console
+func Output(input interface{}, listName string) {
 	fmt.Println(listName)
 
-	for _, product := range products {
-		fmt.Println(product.ToString())
+	switch ent := input.(type) {
+	case []entities.ProductGroup:
+		for _, productGroup := range ent {
+			fmt.Println(productGroup.ToString())
+		}
+	case []entities.Product:
+		for _, product := range ent {
+			fmt.Println(product.ToString())
+		}
 	}
 
 	fmt.Println()

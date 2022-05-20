@@ -152,3 +152,39 @@ func (productModel ProductModel) FindProductById(db *gorm.DB, id int) ([]entitie
 
 	return products, nil
 }
+
+//FindProductWithSelect returns entities with select from Database
+func (productModel ProductModel) FindProductWithSelect(db *gorm.DB) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Table("product").Select("*").Scan(&products)
+
+	return products, nil
+}
+
+//FindProductWithSelectAndCondition returns entities with select and condition from Database
+func (productModel ProductModel) FindProductWithSelectAndCondition(db *gorm.DB, status bool) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Table("product").Where("status = ?", status).Select("*").Scan(&products)
+
+	return products, nil
+}
+
+//FindProductGroupBy returns entities list groupped by from Database
+func (productModel ProductModel) FindProductGroupBy(db *gorm.DB) ([]entities.ProductGroup, error) {
+	var productGroups []entities.ProductGroup
+
+	db.Table("product").Select("status, count(id) AS result1, sum(quantity) AS result2, min(price) AS result3, max(price) AS result4, avg(price) AS result5").Group("status").Scan(&productGroups)
+
+	return productGroups, nil
+}
+
+//FindProductGroupBy returns entities list with HAVING from Database
+func (productModel ProductModel) FindProductWithHaving(db *gorm.DB) ([]entities.ProductGroup, error) {
+	var productGroups []entities.ProductGroup
+
+	db.Table("product").Select("status, count(id) AS result1, sum(quantity) AS result2, min(price) AS result3, max(price) AS result4, avg(price) AS result5").Group("status").Having("count(id) > ?", 2).Scan(&productGroups)
+
+	return productGroups, nil
+}
