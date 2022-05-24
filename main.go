@@ -23,4 +23,11 @@ func main() {
 	controllers.ProductListWithSelectAndCondition()
 	controllers.ProductListWithGroupBy()
 	controllers.ProductListWithHaving()
+	controllers.ProductSum()
+	controllers.ProductWithCondition()
+	controllers.ProductWithCalculate()
+	controllers.ProductCount()
+	controllers.ProductCountWithCondition()
+	controllers.ProductMin()
+	controllers.ProductMinWithCondition()
 }

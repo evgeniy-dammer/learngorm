@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"log"
 	"time"
 
@@ -30,7 +31,7 @@ func ProductsList() {
 	productsList, err := productModel.FindAll(db)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsList, "List of all products:")
@@ -41,7 +42,7 @@ func ProductsListWithCondition() {
 	productsListWithCondition, err := productModel.FindProductsWithConditions(db, true, 5, 15)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListWithCondition, "List of products with condition:")
@@ -52,7 +53,7 @@ func ProductsListWithBetween() {
 	productsListWithBetween, err := productModel.FindProductsWithBetween(db, 5, 15)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListWithBetween, "List of products with BETWEEN condition:")
@@ -63,7 +64,7 @@ func ProductsListStartsWith() {
 	productsListStartsWith, err := productModel.FindProductsStartsWith(db, "Mo")
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListStartsWith, "List of products starts with LIKE condition:")
@@ -74,7 +75,7 @@ func ProductsListEndsWith() {
 	productsListEndsWith, err := productModel.FindProductsEndsWith(db, "vi 1")
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListEndsWith, "List of products ends with LIKE condition:")
@@ -85,7 +86,7 @@ func ProductsListContains() {
 	productsListContains, err := productModel.FindProductsContains(db, "bi")
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListContains, "List of products contains with LIKE condition:")
@@ -96,7 +97,7 @@ func ProductsListOrderByDesc() {
 	productsListOrderByDesc, err := productModel.FindProductsOrderByDesc(db)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListOrderByDesc, "List of products ordered by DESC:")
@@ -107,7 +108,7 @@ func ProductsListOrderByAsc() {
 	productsListOrderByAsc, err := productModel.FindProductsOrderByAsc(db)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListOrderByAsc, "List of products ordered by ASC:")
@@ -118,7 +119,7 @@ func ProductsListOrderByAndCondition() {
 	productsListOrderByAndCondition, err := productModel.FindProductsOrderByAndCondition(db, true)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListOrderByAndCondition, "List of products ordered by DESC and with condition:")
@@ -129,7 +130,7 @@ func ProductsListWithLimit() {
 	productsListWithLimit, err := productModel.FindProductsWithLimit(db, 2)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListWithLimit, "List of products with LIMIT:")
@@ -140,7 +141,7 @@ func ProductsListOrderByWithLimit() {
 	productsListOrderByWithLimit, err := productModel.FindProductsOrderByWithLimit(db, 2)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListOrderByWithLimit, "List of products ordered by with LIMIT:")
@@ -151,7 +152,7 @@ func ProductsListOrderByWithWhereAndLimit() {
 	productsListOrderByWithWhereAndLimit, err := productModel.FindProductsOrderByWithWhereAndLimit(db, true, 2)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListOrderByWithWhereAndLimit, "List of products ordered by with LIMIT and condition:")
@@ -162,7 +163,7 @@ func ProductsListByYearAndMonthAndDay() {
 	productsListByYearAndMonthAndDay, err := productModel.FindProductsByYearAndMonthAndDay(db, 2019, 11, 8)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListByYearAndMonthAndDay, "List of products by year, month and day:")
@@ -173,13 +174,13 @@ func ProductsListByDate() {
 	date, err := time.Parse("2006-01-02", "2019-07-10")
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	productsListByDate, err := productModel.FindProductsByDate(db, date)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListByDate, "List of products by date:")
@@ -190,19 +191,19 @@ func ProductsListByDates() {
 	startDate, err := time.Parse("2006-01-02", "2019-07-09")
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	endDate, err := time.Parse("2006-01-02", "2019-07-15")
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	productsListByDates, err := productModel.FindProductsByDates(db, startDate, endDate)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productsListByDates, "List of products by dates:")
@@ -213,7 +214,7 @@ func ProductById() {
 	productById, err := productModel.FindProductById(db, 2)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productById, "Product by ID:")
@@ -224,7 +225,7 @@ func ProductListWithSelect() {
 	productListWithSelect, err := productModel.FindProductWithSelect(db)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productListWithSelect, "List of products wit select:")
@@ -235,7 +236,7 @@ func ProductListWithSelectAndCondition() {
 	productListWithSelectAndCondition, err := productModel.FindProductWithSelectAndCondition(db, true)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productListWithSelectAndCondition, "List of products with select and condition:")
@@ -246,7 +247,7 @@ func ProductListWithGroupBy() {
 	productListWithGroupBy, err := productModel.FindProductGroupBy(db)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productListWithGroupBy, "List of products with GROUP BY:")
@@ -257,8 +258,71 @@ func ProductListWithHaving() {
 	productListWithHaving, err := productModel.FindProductWithHaving(db)
 
 	if err != nil {
-		log.Fatalln(err)
+		log.Println(err)
 	}
 
 	output.Output(productListWithHaving, "List of products with HAVING:")
+}
+
+//Get sum of product quantities from Database
+func ProductSum() {
+	result := productModel.FindSum(db)
+
+	fmt.Println("Sum of product quantities:")
+	fmt.Println("\tSum:", result)
+	fmt.Println()
+}
+
+//Get sum of product quantities with condition from Database
+func ProductWithCondition() {
+	result := productModel.FindSumWithCondition(db, true)
+
+	fmt.Println("Sum of product quantities with condition:")
+	fmt.Println("\tSum:", result)
+	fmt.Println()
+}
+
+//Get sum of product quantities with calculate from Database
+func ProductWithCalculate() {
+	result := productModel.FindSumWithCalculate(db, true)
+
+	fmt.Println("Sum of product quantities with calculate:")
+	fmt.Println("\tSum:", result)
+	fmt.Println()
+}
+
+//Get count of product entities from Database
+func ProductCount() {
+	result := productModel.FindCount(db)
+
+	fmt.Println("Count of product entities:")
+	fmt.Println("\tCount:", result)
+	fmt.Println()
+}
+
+//Get count of product entities with condition from Database
+func ProductCountWithCondition() {
+	result := productModel.FindCountWithCondition(db, true)
+
+	fmt.Println("Count of product entities with condition:")
+	fmt.Println("\tCount:", result)
+	fmt.Println()
+}
+
+//Get min of product price from Database
+func ProductMin() {
+	result := productModel.FindCount(db)
+
+	fmt.Println("Min product price:")
+	fmt.Println("\tPrice:", result)
+	fmt.Println()
+}
+
+//Get min of product price with condition from Database
+func ProductMinWithCondition() {
+	result := productModel.FindMinWithCondition(db, true)
+
+	fmt.Println("Min product price with condition:")
+	fmt.Println("\tPrice:", result)
+	fmt.Println()
 }

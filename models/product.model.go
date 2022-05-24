@@ -188,3 +188,71 @@ func (productModel ProductModel) FindProductWithHaving(db *gorm.DB) ([]entities.
 
 	return productGroups, nil
 }
+
+//FindSum returns SUM by quantity from Database
+func (productModel ProductModel) FindSum(db *gorm.DB) int64 {
+	var result int64
+
+	row := db.Table("product").Select("sum(quantity)").Row()
+	row.Scan(&result)
+
+	return result
+}
+
+//FindSumWithCondition returns SUM by quantity with conditions from Database
+func (productModel ProductModel) FindSumWithCondition(db *gorm.DB, status bool) int64 {
+	var result int64
+
+	row := db.Table("product").Where("status = ?", status).Select("sum(quantity)").Row()
+	row.Scan(&result)
+
+	return result
+}
+
+//FindSumWithCalculate returns SUM of calculate with conditions from Database
+func (productModel ProductModel) FindSumWithCalculate(db *gorm.DB, status bool) float64 {
+	var result float64
+
+	row := db.Table("product").Where("status = ?", status).Select("sum(price * quantity)").Row()
+	row.Scan(&result)
+
+	return result
+}
+
+//FindCount returns COUNT of entities from Database
+func (productModel ProductModel) FindCount(db *gorm.DB) int64 {
+	var result int64
+
+	db.Table("product").Count(&result)
+
+	return result
+}
+
+//FindCount returns COUNT of entities wit condition from Database
+func (productModel ProductModel) FindCountWithCondition(db *gorm.DB, status bool) int64 {
+	var result int64
+
+	db.Table("product").Where("status = ?", status).Count(&result)
+
+	return result
+}
+
+//FindCount returns MIN of price from Database
+func (productModel ProductModel) FindMin(db *gorm.DB) float64 {
+	var result float64
+
+	row := db.Table("product").Select("min(price)").Row()
+	row.Scan(&result)
+
+	return result
+}
+
+//FindCount returns MIN of price with condition from Database
+func (productModel ProductModel) FindMinWithCondition(db *gorm.DB, status bool) float64 {
+	var result float64
+
+	row := db.Table("product").Where("status = ?", status).Select("min(price)").Row()
+	row.Scan(&result)
+
+	return result
+}
