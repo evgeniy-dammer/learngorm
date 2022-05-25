@@ -19,6 +19,8 @@ func Output(input interface{}, listName string) {
 		for _, product := range ent {
 			fmt.Println(product.ToString())
 		}
+	case entities.Product:
+		fmt.Println(ent.ToString())
 	}
 
 	fmt.Println()

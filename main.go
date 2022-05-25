@@ -30,4 +30,11 @@ func main() {
 	controllers.ProductCountWithCondition()
 	controllers.ProductMin()
 	controllers.ProductMinWithCondition()
+	controllers.ProductMax()
+	controllers.ProductMaxWithCondition()
+	controllers.ProductAvg()
+	controllers.ProductAvgWithCondition()
+	controllers.ProductCreateEntity()
+	controllers.ProductUpdateEntity()
+	controllers.ProductDeleteEntity()
 }

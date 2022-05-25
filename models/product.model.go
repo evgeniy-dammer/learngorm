@@ -9,7 +9,7 @@ import (
 
 type ProductModel struct{}
 
-//FindAll returns entities list from Database
+//FindAll returns entities list
 func (productModel ProductModel) FindAll(db *gorm.DB) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -18,7 +18,7 @@ func (productModel ProductModel) FindAll(db *gorm.DB) ([]entities.Product, error
 	return products, nil
 }
 
-//FindProductsWithConditions returns entities list with conditions from Database
+//FindProductsWithConditions returns entities list with conditions
 func (productModel ProductModel) FindProductsWithConditions(db *gorm.DB, status bool, min float64, max float64) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -27,7 +27,7 @@ func (productModel ProductModel) FindProductsWithConditions(db *gorm.DB, status 
 	return products, nil
 }
 
-//FindProductWithBetween returns entities list with BETWEEN condition from Database
+//FindProductWithBetween returns entities list with BETWEEN condition
 func (productModel ProductModel) FindProductsWithBetween(db *gorm.DB, min float64, max float64) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -36,7 +36,7 @@ func (productModel ProductModel) FindProductsWithBetween(db *gorm.DB, min float6
 	return products, nil
 }
 
-//FindProductStartsWith returns entities list starts with LIKE condition from Database
+//FindProductStartsWith returns entities list starts with LIKE condition
 func (productModel ProductModel) FindProductsStartsWith(db *gorm.DB, keyword string) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -45,7 +45,7 @@ func (productModel ProductModel) FindProductsStartsWith(db *gorm.DB, keyword str
 	return products, nil
 }
 
-//FindProductEndsWith returns entities list ends with LIKE condition from Database
+//FindProductEndsWith returns entities list ends with LIKE condition
 func (productModel ProductModel) FindProductsEndsWith(db *gorm.DB, keyword string) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -54,7 +54,7 @@ func (productModel ProductModel) FindProductsEndsWith(db *gorm.DB, keyword strin
 	return products, nil
 }
 
-//FindProductContains returns entities list contains with LIKE condition from Database
+//FindProductContains returns entities list contains with LIKE condition
 func (productModel ProductModel) FindProductsContains(db *gorm.DB, keyword string) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -63,7 +63,7 @@ func (productModel ProductModel) FindProductsContains(db *gorm.DB, keyword strin
 	return products, nil
 }
 
-//FindProductsOrderByDesc returns entities list ordered by DESC from Database
+//FindProductsOrderByDesc returns entities list ordered by DESC
 func (productModel ProductModel) FindProductsOrderByDesc(db *gorm.DB) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -72,7 +72,7 @@ func (productModel ProductModel) FindProductsOrderByDesc(db *gorm.DB) ([]entitie
 	return products, nil
 }
 
-//FindProductsOrderByAsc returns entities list ordered by ASC from Database
+//FindProductsOrderByAsc returns entities list ordered by ASC
 func (productModel ProductModel) FindProductsOrderByAsc(db *gorm.DB) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -81,7 +81,7 @@ func (productModel ProductModel) FindProductsOrderByAsc(db *gorm.DB) ([]entities
 	return products, nil
 }
 
-//FindProductsOrderByAndCondition returns entities list ordered by and condition from Database
+//FindProductsOrderByAndCondition returns entities list ordered by and condition
 func (productModel ProductModel) FindProductsOrderByAndCondition(db *gorm.DB, status bool) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -90,7 +90,7 @@ func (productModel ProductModel) FindProductsOrderByAndCondition(db *gorm.DB, st
 	return products, nil
 }
 
-//FindProductsWithLimit returns entities list with LIMIT from Database
+//FindProductsWithLimit returns entities list with LIMIT
 func (productModel ProductModel) FindProductsWithLimit(db *gorm.DB, n int) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -99,7 +99,7 @@ func (productModel ProductModel) FindProductsWithLimit(db *gorm.DB, n int) ([]en
 	return products, nil
 }
 
-//FindProductsOrderByWithLimit returns entities list ordered by with LIMIT from Database
+//FindProductsOrderByWithLimit returns entities list ordered by with LIMIT
 func (productModel ProductModel) FindProductsOrderByWithLimit(db *gorm.DB, n int) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -108,7 +108,7 @@ func (productModel ProductModel) FindProductsOrderByWithLimit(db *gorm.DB, n int
 	return products, nil
 }
 
-//FindProductsOrderByWithWhereAndLimit returns entities list ordered by with LIMIT and condition from Database
+//FindProductsOrderByWithWhereAndLimit returns entities list ordered by with LIMIT and condition
 func (productModel ProductModel) FindProductsOrderByWithWhereAndLimit(db *gorm.DB, status bool, n int) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -117,7 +117,7 @@ func (productModel ProductModel) FindProductsOrderByWithWhereAndLimit(db *gorm.D
 	return products, nil
 }
 
-//FindProductsByYearAndMonthAndDay returns entities list by year, month and day from Database
+//FindProductsByYearAndMonthAndDay returns entities list by year, month and day
 func (productModel ProductModel) FindProductsByYearAndMonthAndDay(db *gorm.DB, year int, month int, day int) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -126,7 +126,7 @@ func (productModel ProductModel) FindProductsByYearAndMonthAndDay(db *gorm.DB, y
 	return products, nil
 }
 
-//FindProductsByDate returns entities list by date from Database
+//FindProductsByDate returns entities list by date
 func (productModel ProductModel) FindProductsByDate(db *gorm.DB, date time.Time) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -135,7 +135,7 @@ func (productModel ProductModel) FindProductsByDate(db *gorm.DB, date time.Time)
 	return products, nil
 }
 
-//FindProductsByDates returns entities list by dates from Database
+//FindProductsByDates returns entities list by dates
 func (productModel ProductModel) FindProductsByDates(db *gorm.DB, startDate time.Time, endDate time.Time) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -144,7 +144,7 @@ func (productModel ProductModel) FindProductsByDates(db *gorm.DB, startDate time
 	return products, nil
 }
 
-//FindProductById returns entity by id from Database
+//FindProductById returns entity by id
 func (productModel ProductModel) FindProductById(db *gorm.DB, id int) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -153,7 +153,7 @@ func (productModel ProductModel) FindProductById(db *gorm.DB, id int) ([]entitie
 	return products, nil
 }
 
-//FindProductWithSelect returns entities with select from Database
+//FindProductWithSelect returns entities with select
 func (productModel ProductModel) FindProductWithSelect(db *gorm.DB) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -162,7 +162,7 @@ func (productModel ProductModel) FindProductWithSelect(db *gorm.DB) ([]entities.
 	return products, nil
 }
 
-//FindProductWithSelectAndCondition returns entities with select and condition from Database
+//FindProductWithSelectAndCondition returns entities with select and condition
 func (productModel ProductModel) FindProductWithSelectAndCondition(db *gorm.DB, status bool) ([]entities.Product, error) {
 	var products []entities.Product
 
@@ -171,7 +171,7 @@ func (productModel ProductModel) FindProductWithSelectAndCondition(db *gorm.DB, 
 	return products, nil
 }
 
-//FindProductGroupBy returns entities list groupped by from Database
+//FindProductGroupBy returns entities list groupped by
 func (productModel ProductModel) FindProductGroupBy(db *gorm.DB) ([]entities.ProductGroup, error) {
 	var productGroups []entities.ProductGroup
 
@@ -180,7 +180,7 @@ func (productModel ProductModel) FindProductGroupBy(db *gorm.DB) ([]entities.Pro
 	return productGroups, nil
 }
 
-//FindProductGroupBy returns entities list with HAVING from Database
+//FindProductGroupBy returns entities list with HAVING
 func (productModel ProductModel) FindProductWithHaving(db *gorm.DB) ([]entities.ProductGroup, error) {
 	var productGroups []entities.ProductGroup
 
@@ -189,7 +189,7 @@ func (productModel ProductModel) FindProductWithHaving(db *gorm.DB) ([]entities.
 	return productGroups, nil
 }
 
-//FindSum returns SUM by quantity from Database
+//FindSum returns SUM by quantity
 func (productModel ProductModel) FindSum(db *gorm.DB) int64 {
 	var result int64
 
@@ -199,7 +199,7 @@ func (productModel ProductModel) FindSum(db *gorm.DB) int64 {
 	return result
 }
 
-//FindSumWithCondition returns SUM by quantity with conditions from Database
+//FindSumWithCondition returns SUM by quantity with conditions
 func (productModel ProductModel) FindSumWithCondition(db *gorm.DB, status bool) int64 {
 	var result int64
 
@@ -209,7 +209,7 @@ func (productModel ProductModel) FindSumWithCondition(db *gorm.DB, status bool) 
 	return result
 }
 
-//FindSumWithCalculate returns SUM of calculate with conditions from Database
+//FindSumWithCalculate returns SUM of calculate with conditions
 func (productModel ProductModel) FindSumWithCalculate(db *gorm.DB, status bool) float64 {
 	var result float64
 
@@ -219,7 +219,7 @@ func (productModel ProductModel) FindSumWithCalculate(db *gorm.DB, status bool) 
 	return result
 }
 
-//FindCount returns COUNT of entities from Database
+//FindCount returns COUNT of entities
 func (productModel ProductModel) FindCount(db *gorm.DB) int64 {
 	var result int64
 
@@ -228,7 +228,7 @@ func (productModel ProductModel) FindCount(db *gorm.DB) int64 {
 	return result
 }
 
-//FindCount returns COUNT of entities wit condition from Database
+//FindCountWithCondition returns COUNT of entities wit condition
 func (productModel ProductModel) FindCountWithCondition(db *gorm.DB, status bool) int64 {
 	var result int64
 
@@ -237,7 +237,7 @@ func (productModel ProductModel) FindCountWithCondition(db *gorm.DB, status bool
 	return result
 }
 
-//FindCount returns MIN of price from Database
+//FindMin returns MIN of price
 func (productModel ProductModel) FindMin(db *gorm.DB) float64 {
 	var result float64
 
@@ -247,7 +247,7 @@ func (productModel ProductModel) FindMin(db *gorm.DB) float64 {
 	return result
 }
 
-//FindCount returns MIN of price with condition from Database
+//FindMinWithCondition returns MIN of price with condition
 func (productModel ProductModel) FindMinWithCondition(db *gorm.DB, status bool) float64 {
 	var result float64
 
@@ -255,4 +255,83 @@ func (productModel ProductModel) FindMinWithCondition(db *gorm.DB, status bool) 
 	row.Scan(&result)
 
 	return result
+}
+
+//FindMax returns MAX of price
+func (productModel ProductModel) FindMax(db *gorm.DB) float64 {
+	var result float64
+
+	row := db.Table("product").Select("max(price)").Row()
+	row.Scan(&result)
+
+	return result
+}
+
+//FindMaxWithCondition returns MAX of price with condition
+func (productModel ProductModel) FindMaxWithCondition(db *gorm.DB, status bool) float64 {
+	var result float64
+
+	row := db.Table("product").Where("status = ?", status).Select("max(price)").Row()
+	row.Scan(&result)
+
+	return result
+}
+
+//FindAvg returns AVG of price
+func (productModel ProductModel) FindAvg(db *gorm.DB) float64 {
+	var result float64
+
+	row := db.Table("product").Select("avg(price)").Row()
+	row.Scan(&result)
+
+	return result
+}
+
+//FindAvgWithCondition returns AVG of price with condition
+func (productModel ProductModel) FindAvgWithCondition(db *gorm.DB, status bool) float64 {
+	var result float64
+
+	row := db.Table("product").Where("status = ?", status).Select("avg(price)").Row()
+	row.Scan(&result)
+
+	return result
+}
+
+//FindAllStoredProc returns entities list using stored procedure
+func (productModel ProductModel) FindAllStoredProc(db *gorm.DB) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Raw("call sp_findAll()").Scan(&products)
+
+	return products, nil
+}
+
+//CreateEntity creates entity
+func (productModel ProductModel) CreateEntity(db *gorm.DB, product *entities.Product) error {
+	db.Create(&product)
+
+	return nil
+}
+
+//UpdateEntity updates entity
+func (productModel ProductModel) UpdateEntity(db *gorm.DB, product *entities.Product) error {
+	db.Save(&product)
+
+	return nil
+}
+
+//FindProductByIdWithFirst returns entity by id
+func (productModel ProductModel) FindProductByIdWithFirst(db *gorm.DB, id int) (entities.Product, error) {
+	var product entities.Product
+
+	db.Where("id = ?", id).First(&product)
+
+	return product, nil
+}
+
+//DeleteEntity deletes entity
+func (productModel ProductModel) DeleteEntity(db *gorm.DB, product entities.Product) error {
+	db.Delete(&product)
+
+	return nil
 }
