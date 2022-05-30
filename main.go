@@ -37,4 +37,8 @@ func main() {
 	controllers.ProductCreateEntity()
 	controllers.ProductUpdateEntity()
 	controllers.ProductDeleteEntity()
+	controllers.FacultyListWithStudents()
+	controllers.StudentsListWithFaculties()
+	controllers.LanguagesListWithUsers()
+	controllers.UsersListWithLanguages()
 }
