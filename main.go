@@ -41,4 +41,6 @@ func main() {
 	controllers.StudentsListWithFaculties()
 	controllers.LanguagesListWithUsers()
 	controllers.UsersListWithLanguages()
+	controllers.AccountsListWithRoles()
+	controllers.RolesListWithAccounts()
 }

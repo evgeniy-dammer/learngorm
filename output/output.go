@@ -53,6 +53,24 @@ func Output(input interface{}, listName string) {
 				}
 			}
 		}
+	case []entities.Account:
+		for _, account := range ent {
+			fmt.Println(account.ToString())
+			if len(account.RoleAccounts) > 0 {
+				for _, role := range account.RoleAccounts {
+					fmt.Println("\t" + role.ToString())
+				}
+			}
+		}
+	case []entities.Role:
+		for _, role := range ent {
+			fmt.Println(role.ToString())
+			if len(role.RoleAccounts) > 0 {
+				for _, account := range role.RoleAccounts {
+					fmt.Println("\t" + account.ToString())
+				}
+			}
+		}
 	}
 
 	fmt.Println()
