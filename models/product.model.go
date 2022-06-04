@@ -335,3 +335,21 @@ func (productModel ProductModel) DeleteEntity(db *gorm.DB, product entities.Prod
 
 	return nil
 }
+
+//FindAllWithStoredProcedure returns entities list with stored procedure
+func (productModel ProductModel) FindAllWithStoredProcedure(db *gorm.DB) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Raw("CALL sp_findAll()").Scan(&products)
+
+	return products, nil
+}
+
+//FindAllWithStoredProcedure returns entities list with stored procedure
+func (productModel ProductModel) FindByPricesWithStoredProcedure(db *gorm.DB, min, max float64) ([]entities.Product, error) {
+	var products []entities.Product
+
+	db.Raw("CALL findBetween(?, ?)", min, max).Scan(&products)
+
+	return products, nil
+}

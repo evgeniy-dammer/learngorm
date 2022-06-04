@@ -43,4 +43,6 @@ func main() {
 	controllers.UsersListWithLanguages()
 	controllers.AccountsListWithRoles()
 	controllers.RolesListWithAccounts()
+	controllers.ProductsListWithStoredProcedure()
+	controllers.ProductsListByPricesWithStoredProcedure()
 }

@@ -444,3 +444,27 @@ func ProductDeleteEntity() {
 
 	output.Output(product, "Delete product entity:")
 }
+
+//Get entities list with stored procedure
+func ProductsListWithStoredProcedure() {
+	productsList, err := productModel.FindAllWithStoredProcedure(db)
+
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	output.Output(productsList, "List of all products with stored procedure:")
+}
+
+//Get entities list by prices with stored procedure
+func ProductsListByPricesWithStoredProcedure() {
+	productsList, err := productModel.FindByPricesWithStoredProcedure(db, 5, 10)
+
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
+	output.Output(productsList, "List of products by prices with stored procedure:")
+}
